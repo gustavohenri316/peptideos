@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Referências · Peptídeos e Estética</title>
+<style>
+/* Layout: bibliografia como fichário de laboratório — índice de disciplinas fixo no topo, fichas numeradas em coluna única legível */
+:root{
+  --bg:#100d1c; --surface:#17132a; --surface-2:#211b39; --line:#2f2850;
+  --fg:#efe9f7; --muted:#a69dc2; --on-accent:#160d24;
+  --eosin:#ff7aa5; --hema:#9184ff; --amber:#ffbe5c; --ok:#62d6aa; --water:#6fb6ff;
+  --f-display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#f7f4fc; --surface:#ffffff; --surface-2:#eee8f8; --line:#ddd4ee;
+  --fg:#1b1533; --muted:#5d5581; --on-accent:#ffffff;
+  --eosin:#d22e6a; --hema:#5a48d8; --amber:#b06d06; --ok:#0f8460; --water:#2577d1; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#f7f4fc; --surface:#ffffff; --surface-2:#eee8f8; --line:#ddd4ee;
+  --fg:#1b1533; --muted:#5d5581; --on-accent:#ffffff;
+  --eosin:#d22e6a; --hema:#5a48d8; --amber:#b06d06; --ok:#0f8460; --water:#2577d1; color-scheme:light }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.6;transition:background .4s,color .4s}
+a{color:var(--hema)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--eosin);outline-offset:3px;border-radius:6px}
+.wrap{max-width:900px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2{font-family:var(--f-display);line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.4rem,7vw,4.4rem);font-weight:800}
+h1 em{font-style:normal;color:var(--eosin)}
+h2{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800}
+p{margin:0}
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;min-height:58px}
+.back{font-weight:700;text-decoration:none;color:var(--fg);white-space:nowrap}
+.back b{color:var(--eosin)}
+.theme{margin-left:auto;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);cursor:pointer;font-size:1.1rem}
+header.hero{padding-block:clamp(40px,8vw,80px) 24px;display:grid;gap:16px}
+.eyebrow{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lead{color:var(--muted);font-size:1.08rem;max-width:62ch}
+.tools{display:grid;gap:12px;padding-block:8px 20px;position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:9;background:var(--bg)}
+.search{width:100%;padding:.75em 1em;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.4em .9em;font-size:.85rem;cursor:pointer;display:inline-flex;align-items:center;gap:.5em}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.count{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.group{display:grid;gap:12px;margin-top:34px}
+.group h2{display:flex;align-items:center;gap:.5em}
+.group h2 i{width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 14px var(--c)}
+.ref{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.ref .n{font-family:var(--f-mono);font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;min-width:2.2em}
+.ref .cite{overflow-wrap:anywhere}
+.ref .use{margin-top:8px;font-size:.88rem;color:var(--muted)}
+.ref .use b{color:var(--fg);font-weight:700}
+.ref .act{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.ref .act a,.ref .act button{font-size:.8rem;font-family:var(--f-mono);padding:.35em .8em;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);text-decoration:none;cursor:pointer}
+.ref .act a:hover,.ref .act button:hover{border-color:var(--hema)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tags span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:.2em .6em;border-radius:999px;border:1px solid var(--c);color:var(--c)}
+.note{margin-top:40px;padding:20px;border-radius:16px;border:1px dashed var(--line);display:grid;gap:10px;color:var(--muted);font-size:.95rem}
+.note b{color:var(--fg)}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+footer{padding-block:40px 70px;color:var(--muted);font-size:.88rem}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:.6em 1.1em;border-radius:999px;font-weight:700;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .3s}
+.toast.on{opacity:1}
+@media (max-width:600px){body{font-size:16px}.ref{grid-template-columns:minmax(0,1fr);gap:4px}.tools{position:static}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <span class="eyebrow">Material de apoio</span>
+    <h1>Referências e <em>fontes</em></h1>
+    <p class="lead">As obras e documentos que sustentam cada parte do material “Peptídeos e estética corporal”, organizados por disciplina. Citações no padrão ABNT (NBR 6023).</p>
+    <div class="chips"><span class="chip" style="--c:var(--amber)"><i></i>Bioquímica celular (4)</span><span class="chip" style="--c:var(--ok)"><i></i>Fisiologia humana (9)</span><span class="chip" style="--c:var(--eosin)"><i></i>Histotecnologia clínica (5)</span><span class="chip" style="--c:var(--hema)"><i></i>Reprodução assistida (4)</span><span class="chip" style="--c:var(--water)"><i></i>Citogenética (5)</span><span class="chip" style="--c:var(--muted)"><i></i>Regulação e bulas (4)</span></div>
+    <span class="count">31 referências</span>
+  </header>
+<section class="group" style="--c:var(--amber)"><h2><i></i>Bioquímica celular</h2>
+<article class="ref"><span class="n">[1]</span><div><p class="cite">NELSON, D. L.; COX, M. M. <i>Princípios de bioquímica de Lehninger</i>. 7. ed. Porto Alegre: Artmed, 2019.</p><p class="use"><b>Usado em:</b> Aminoácidos, ligação peptídica com liberação de água, classes de aminoácidos (hidrofóbicos, polares, com carga).</p><div class="tags"><span style="--c:var(--amber)">Bioquímica celular</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Lehninger%20Princ%C3%ADpios%20de%20Bioqu%C3%ADmica%207%20ed">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[2]</span><div><p class="cite">DRUCKER, D. J. Advances in oral peptide therapeutics. <i>Nature Reviews Drug Discovery</i>, v. 19, n. 4, p. 277-289, 2020.</p><p class="use"><b>Usado em:</b> Por que peptídeos são digeridos por proteases e quase sempre precisam ser injetados.</p><div class="tags"><span style="--c:var(--amber)">Bioquímica celular</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Drucker%20Advances%20in%20oral%20peptide%20therapeutics%20Nature%20Reviews%20Drug%20Discovery%202020">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[3]</span><div><p class="cite">LAU, J. et al. Discovery of the once-weekly glucagon-like peptide-1 (GLP-1) analogue semaglutide. <i>Journal of Medicinal Chemistry</i>, v. 58, n. 18, p. 7370-7380, 2015.</p><p class="use"><b>Usado em:</b> Troca da posição 2 por Aib e a cadeia de ácido graxo ligada à albumina, que levam a meia-vida a cerca de 7 dias.</p><div class="tags"><span style="--c:var(--amber)">Bioquímica celular</span><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Lau%20Discovery%20of%20the%20once-weekly%20GLP-1%20analogue%20semaglutide%20J%20Med%20Chem%202015">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[4]</span><div><p class="cite">PICKART, L.; MARGOLINA, A. Regenerative and protective actions of the GHK-Cu peptide in the light of the new gene data. <i>International Journal of Molecular Sciences</i>, v. 19, n. 7, 1987, 2018.</p><p class="use"><b>Usado em:</b> Uso do GHK-Cu em cosméticos tópicos.</p><div class="tags"><span style="--c:var(--amber)">Bioquímica celular</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Pickart%20Margolina%20GHK-Cu%20peptide%20new%20gene%20data%202018">Buscar no Google Acadêmico ↗</a></div></div></article>
+</section>
+<section class="group" style="--c:var(--ok)"><h2><i></i>Fisiologia humana</h2>
+<article class="ref"><span class="n">[5]</span><div><p class="cite">HALL, J. E.; HALL, M. E. <i>Guyton &amp; Hall: tratado de fisiologia médica</i>. 14. ed. Rio de Janeiro: GEN Guanabara Koogan, 2021.</p><p class="use"><b>Usado em:</b> Eixos hormonais, retroalimentação negativa, eixo GHRH → GH → IGF-1 e eixo reprodutivo (GnRH, LH, FSH).</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Guyton%20Hall%20Tratado%20de%20Fisiologia%20M%C3%A9dica%2014%20ed">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[6]</span><div><p class="cite">HOLST, J. J. The physiology of glucagon-like peptide 1. <i>Physiological Reviews</i>, v. 87, n. 4, p. 1409-1439, 2007.</p><p class="use"><b>Usado em:</b> GLP-1 natural, degradação rápida pela DPP-4 (meia-vida de poucos minutos) e ações no cérebro, estômago e pâncreas.</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Holst%20The%20physiology%20of%20glucagon-like%20peptide%201%20Physiological%20Reviews%202007">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[7]</span><div><p class="cite">DRUCKER, D. J. Mechanisms of action and therapeutic application of glucagon-like peptide-1. <i>Cell Metabolism</i>, v. 27, n. 4, p. 740-756, 2018.</p><p class="use"><b>Usado em:</b> Órgãos-alvo do GLP-1 e efeitos adversos gastrointestinais.</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Drucker%20Mechanisms%20of%20action%20and%20therapeutic%20application%20of%20glucagon-like%20peptide-1%20Cell%20Metabolism%202018">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[8]</span><div><p class="cite">WILDING, J. P. H. et al. Once-weekly semaglutide in adults with overweight or obesity. <i>New England Journal of Medicine</i>, v. 384, n. 11, p. 989-1002, 2021.</p><p class="use"><b>Usado em:</b> Eficácia e efeitos adversos da semaglutida; perda de massa magra junto com a gordura.</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Wilding%20Once-weekly%20semaglutide%20in%20adults%20with%20overweight%20or%20obesity%20NEJM%202021">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[9]</span><div><p class="cite">WILDING, J. P. H. et al. Weight regain and cardiometabolic effects after withdrawal of semaglutide: the STEP 1 trial extension. <i>Diabetes, Obesity and Metabolism</i>, v. 24, n. 8, p. 1553-1564, 2022.</p><p class="use"><b>Usado em:</b> Reganho de peso após a interrupção (efeito rebote).</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Wilding%20Weight%20regain%20after%20withdrawal%20of%20semaglutide%20STEP%201%20extension%202022">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[10]</span><div><p class="cite">HE, L. et al. Association of glucagon-like peptide-1 receptor agonist use with risk of gallbladder and biliary diseases: a systematic review and meta-analysis. <i>JAMA Internal Medicine</i>, v. 182, n. 5, p. 513-519, 2022.</p><p class="use"><b>Usado em:</b> Maior risco de doenças da vesícula com agonistas de GLP-1.</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=He%20GLP-1%20receptor%20agonist%20gallbladder%20biliary%20diseases%20meta-analysis%20JAMA%20Internal%20Medicine%202022">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[11]</span><div><p class="cite">HOLT, R. I. G.; HO, K. K. Y. The use and abuse of growth hormone in sports. <i>Endocrine Reviews</i>, v. 40, n. 4, p. 1163-1185, 2019.</p><p class="use"><b>Usado em:</b> Efeitos adversos do GH em excesso: retenção de líquido, dor articular, túnel do carpo, resistência à insulina.</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Holt%20Ho%20The%20use%20and%20abuse%20of%20growth%20hormone%20in%20sports%20Endocrine%20Reviews%202019">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[12]</span><div><p class="cite">SIGALOS, J. T.; PASTUSZAK, A. W. The safety and efficacy of growth hormone secretagogues. <i>Sexual Medicine Reviews</i>, v. 6, n. 1, p. 45-53, 2018.</p><p class="use"><b>Usado em:</b> Secretagogos de GH (como ipamorelina e CJC-1295) e falta de dados de segurança.</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Sigalos%20Pastuszak%20safety%20and%20efficacy%20of%20growth%20hormone%20secretagogues%202018">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[13]</span><div><p class="cite">SEIWERTH, S. et al. BPC 157 and standard angiogenic growth factors: gastrointestinal tract healing, lessons from tendon, ligament, muscle and bone healing. <i>Current Pharmaceutical Design</i>, v. 24, n. 18, p. 1972-1989, 2018.</p><p class="use"><b>Usado em:</b> BPC-157: evidência vinda principalmente de estudos em animais.</p><div class="tags"><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Seiwerth%20BPC%20157%20and%20standard%20angiogenic%20growth%20factors%202018">Buscar no Google Acadêmico ↗</a></div></div></article>
+</section>
+<section class="group" style="--c:var(--eosin)"><h2><i></i>Histotecnologia clínica</h2>
+<article class="ref"><span class="n">[14]</span><div><p class="cite">SUVARNA, S. K.; LAYTON, C.; BANCROFT, J. D. <i>Bancroft’s theory and practice of histological techniques</i>. 8. ed. Elsevier, 2019.</p><p class="use"><b>Usado em:</b> Etapas da técnica histológica (fixação em formol, inclusão em parafina, microtomia de 3 a 5 µm) e coloração H&amp;E.</p><div class="tags"><span style="--c:var(--eosin)">Histotecnologia clínica</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Bancroft%20theory%20and%20practice%20of%20histological%20techniques%208th%20edition">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[15]</span><div><p class="cite">JUNQUEIRA, L. C.; CARNEIRO, J. <i>Histologia básica</i>. 13. ed. Rio de Janeiro: Guanabara Koogan, 2017.</p><p class="use"><b>Usado em:</b> Camadas da pele, tecido adiposo, pâncreas exócrino e ilhotas.</p><div class="tags"><span style="--c:var(--eosin)">Histotecnologia clínica</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Junqueira%20Carneiro%20Histologia%20B%C3%A1sica%2013%20ed">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[16]</span><div><p class="cite">KUMAR, V.; ABBAS, A. K.; ASTER, J. C. <i>Robbins &amp; Cotran pathologic basis of disease</i>. 10. ed. Philadelphia: Elsevier, 2020.</p><p class="use"><b>Usado em:</b> Inflamação, granuloma de corpo estranho com células gigantes, fibrose, pancreatite aguda e necrose gordurosa.</p><div class="tags"><span style="--c:var(--eosin)">Histotecnologia clínica</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Robbins%20Cotran%20Pathologic%20Basis%20of%20Disease%2010th%20edition">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[17]</span><div><p class="cite">EVANS-BROWN, M. et al. Use of melanotan I and II in the general population. <i>BMJ</i>, v. 338, b566, 2009.</p><p class="use"><b>Usado em:</b> Uso de Melanotan sem registro e mudanças em pintas.</p><div class="tags"><span style="--c:var(--eosin)">Histotecnologia clínica</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Evans-Brown%20Use%20of%20melanotan%20I%20and%20II%20in%20the%20general%20population%20BMJ%202009">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[18]</span><div><p class="cite">HABBEMA, L. et al. Risks of unregulated use of alpha-melanocyte-stimulating hormone analogues: a review. <i>International Journal of Dermatology</i>, v. 56, n. 10, p. 975-980, 2017.</p><p class="use"><b>Usado em:</b> Riscos do Melanotan: pintas novas, relatos de melanoma, náusea e priapismo.</p><div class="tags"><span style="--c:var(--eosin)">Histotecnologia clínica</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Habbema%20Risks%20of%20unregulated%20use%20of%20alpha-melanocyte-stimulating%20hormone%20analogues%202017">Buscar no Google Acadêmico ↗</a></div></div></article>
+</section>
+<section class="group" style="--c:var(--hema)"><h2><i></i>Reprodução assistida</h2>
+<article class="ref"><span class="n">[19]</span><div><p class="cite">ESHRE REPRODUCTIVE ENDOCRINOLOGY GUIDELINE GROUP. ESHRE guideline: ovarian stimulation for IVF/ICSI. <i>Human Reproduction Open</i>, v. 2020, n. 2, hoaa009, 2020.</p><p class="use"><b>Usado em:</b> Estimulação ovariana com FSH, análogos de GnRH, gatilho com hCG ou agonista de GnRH e monitoramento.</p><div class="tags"><span style="--c:var(--hema)">Reprodução assistida</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=ESHRE%20guideline%20ovarian%20stimulation%20for%20IVF%20ICSI%202020">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[20]</span><div><p class="cite">PRACTICE COMMITTEE OF THE AMERICAN SOCIETY FOR REPRODUCTIVE MEDICINE. Prevention and treatment of moderate and severe ovarian hyperstimulation syndrome: a guideline. <i>Fertility and Sterility</i>, v. 106, n. 7, p. 1634-1647, 2016.</p><p class="use"><b>Usado em:</b> Síndrome de hiperestimulação ovariana.</p><div class="tags"><span style="--c:var(--hema)">Reprodução assistida</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=ASRM%20Prevention%20and%20treatment%20of%20moderate%20and%20severe%20ovarian%20hyperstimulation%20syndrome%20guideline%202016">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[21]</span><div><p class="cite">RAHNEMA, C. D. et al. Anabolic steroid-induced hypogonadism: diagnosis and treatment. <i>Fertility and Sterility</i>, v. 101, n. 5, p. 1271-1279, 2014.</p><p class="use"><b>Usado em:</b> Supressão do eixo reprodutivo masculino e queda na produção de espermatozoides.</p><div class="tags"><span style="--c:var(--hema)">Reprodução assistida</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Rahnema%20Anabolic%20steroid-induced%20hypogonadism%20diagnosis%20and%20treatment%202014">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[22]</span><div><p class="cite">ESHRE PGT CONSORTIUM AND SIG-EMBRYOLOGY BIOPSY WORKING GROUP. ESHRE PGT Consortium and SIG Embryology good practice recommendations for polar body and embryo biopsy for PGT. <i>Human Reproduction Open</i>, v. 2020, n. 2, hoaa020, 2020.</p><p class="use"><b>Usado em:</b> Biópsia do blastocisto para teste genético pré-implantacional (PGT-A).</p><div class="tags"><span style="--c:var(--hema)">Reprodução assistida</span><span style="--c:var(--water)">Citogenética</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=ESHRE%20PGT%20Consortium%20good%20practice%20recommendations%20embryo%20biopsy%202020">Buscar no Google Acadêmico ↗</a></div></div></article>
+</section>
+<section class="group" style="--c:var(--water)"><h2><i></i>Citogenética</h2>
+<article class="ref"><span class="n">[23]</span><div><p class="cite">NUSSBAUM, R. L.; MCINNES, R. R.; WILLARD, H. F. <i>Thompson &amp; Thompson genética médica</i>. 8. ed. Rio de Janeiro: Elsevier, 2016.</p><p class="use"><b>Usado em:</b> Cromossomos humanos, mitose, cariótipo, aneuploidias e trissomia do 21.</p><div class="tags"><span style="--c:var(--water)">Citogenética</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Thompson%20Thompson%20Gen%C3%A9tica%20M%C3%A9dica%208%20ed">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[24]</span><div><p class="cite">GARDNER, R. J. M.; AMOR, D. J. <i>Gardner and Sutherland’s chromosome abnormalities and genetic counseling</i>. 5. ed. New York: Oxford University Press, 2018.</p><p class="use"><b>Usado em:</b> Cariótipo na investigação de infertilidade e perdas gestacionais.</p><div class="tags"><span style="--c:var(--water)">Citogenética</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Gardner%20Sutherland%20chromosome%20abnormalities%20and%20genetic%20counseling%205th%20edition">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[25]</span><div><p class="cite">McGOWAN-JORDAN, J.; HASTINGS, R. J.; MOORE, S. (ed.). <i>ISCN 2020: an international system for human cytogenomic nomenclature</i>. Basel: Karger, 2020.</p><p class="use"><b>Usado em:</b> Notação do cariótipo (46,XX e 47,XX,+21) e técnica de bandas G.</p><div class="tags"><span style="--c:var(--water)">Citogenética</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=ISCN%202020%20international%20system%20for%20human%20cytogenomic%20nomenclature">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[26]</span><div><p class="cite">BEN-DAVID, U.; AMON, A. Context is everything: aneuploidy in cancer. <i>Nature Reviews Genetics</i>, v. 21, n. 1, p. 44-62, 2020.</p><p class="use"><b>Usado em:</b> Aneuploidia como característica comum de células tumorais.</p><div class="tags"><span style="--c:var(--water)">Citogenética</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Ben-David%20Amon%20Context%20is%20everything%20aneuploidy%20in%20cancer%202020">Buscar no Google Acadêmico ↗</a></div></div></article>
+<article class="ref"><span class="n">[27]</span><div><p class="cite">POLLAK, M. Insulin and insulin-like growth factor signalling in neoplasia. <i>Nature Reviews Cancer</i>, v. 8, n. 12, p. 915-928, 2008.</p><p class="use"><b>Usado em:</b> IGF-1 estimula a proliferação e a sobrevivência celular; por isso o GH é contraindicado em quem tem tumor.</p><div class="tags"><span style="--c:var(--water)">Citogenética</span><span style="--c:var(--ok)">Fisiologia humana</span></div><div class="act"><a href="https://scholar.google.com/scholar?q=Pollak%20Insulin%20and%20insulin-like%20growth%20factor%20signalling%20in%20neoplasia%202008">Buscar no Google Acadêmico ↗</a></div></div></article>
+</section>
+<section class="group" style="--c:var(--muted)"><h2><i></i>Regulação e bulas</h2>
+<article class="ref"><span class="n">[28]</span><div><p class="cite">NOVO NORDISK. <i>Wegovy® (semaglutida): bula para o profissional de saúde</i>. Prescribing information. Plainsboro: Novo Nordisk, versão vigente.</p><p class="use"><b>Usado em:</b> Meia-vida de cerca de 1 semana, náusea, pancreatite, colelitíase, contraindicação na gestação e interrupção cerca de 2 meses antes de engravidar.</p><div class="tags"><span style="--c:var(--muted)">Regulação e bulas</span><span style="--c:var(--hema)">Reprodução assistida</span></div><div class="act"><a href="https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=wegovy">Abrir DailyMed ↗</a></div></div></article>
+<article class="ref"><span class="n">[29]</span><div><p class="cite">ELI LILLY. <i>Mounjaro® (tirzepatida): bula para o profissional de saúde</i>. Prescribing information. Indianapolis: Eli Lilly, versão vigente.</p><p class="use"><b>Usado em:</b> Redução do efeito de anticoncepcionais orais no início e a cada aumento de dose.</p><div class="tags"><span style="--c:var(--muted)">Regulação e bulas</span><span style="--c:var(--hema)">Reprodução assistida</span></div><div class="act"><a href="https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=mounjaro">Abrir DailyMed ↗</a></div></div></article>
+<article class="ref"><span class="n">[30]</span><div><p class="cite">AGÊNCIA NACIONAL DE VIGILÂNCIA SANITÁRIA (ANVISA). <i>Consultas: medicamentos e produtos regularizados</i>. Brasília: Anvisa.</p><p class="use"><b>Usado em:</b> Verificação de registro de medicamentos e alertas sobre produtos irregulares e canetas falsificadas.</p><div class="tags"><span style="--c:var(--muted)">Regulação e bulas</span></div><div class="act"><a href="https://consultas.anvisa.gov.br/">Abrir consultas.anvisa.gov.br ↗</a></div></div></article>
+<article class="ref"><span class="n">[31]</span><div><p class="cite">WORLD ANTI-DOPING AGENCY (WADA). <i>The prohibited list</i>. Montreal: WADA, edição vigente.</p><p class="use"><b>Usado em:</b> BPC-157 (seção S0) e secretagogos de GH proibidos no esporte.</p><div class="tags"><span style="--c:var(--muted)">Regulação e bulas</span></div><div class="act"><a href="https://www.wada-ama.org/en/prohibited-list">Abrir wada-ama.org ↗</a></div></div></article>
+</section>
+
+  <section class="note" aria-label="Observações sobre o conteúdo">
+    <b>Sobre o conteúdo do material</b>
+    <p>O <b>caso ilustrativo</b> “Seis meses de atalho” é uma história fictícia, montada a partir de efeitos adversos descritos nas referências acima. Não representa uma pessoa real.</p>
+    <p>O <b>simulador de risco</b> e o <b>gráfico de meia-vida</b> são modelos didáticos simplificados. O gráfico usa um modelo de absorção e eliminação de primeira ordem com meia-vida de cerca de 7 dias para a semaglutida e cerca de 2 minutos para o GLP-1 natural. Não servem para calcular doses.</p>
+    <p>As <b>lâminas do microscópio virtual</b> são ilustrações geradas por computador que imitam a coloração H&amp;E. Não são imagens de pacientes.</p>
+    <p>Bulas e registros mudam com o tempo. Antes de citar dados regulatórios, confirme a versão atual no site da Anvisa ou da agência responsável.</p>
+  </section>
+</main>
+<footer><div class="wrap">Conteúdo educativo. Não substitui consulta com profissional de saúde.</div></footer>
+</body>
+</html>
